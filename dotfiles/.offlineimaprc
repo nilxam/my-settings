@@ -1,0 +1,37 @@
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = main
+sockettimeout = 0
+pythonfile = ~/.kwalletbinding.py
+
+[Account main]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = main-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = main-remote
+# Status cache. Default is plain, which eventually becomes huge and slow.
+status_backend = sqlite
+# refresh every 7 minutes
+autorefresh = 7
+# Retreive mails in 7 days
+# maxage = 7
+
+[Repository main-local]
+# Currently, offlineimap only supports maildir and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/Maildir
+sep = /
+
+[Repository main-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+folderfilter = lambda foldername: foldername not in ["Cabinet","Junk Mail", "Tasklist", "Trash"]
+remotehost = imap.novell.com
+remoteuser = user
+remotepass = pw
+# if kwalletcli supported
+# remotepasseval = kwallet_get('imap_suse', 'user')
+realdelete = no
+maxconnections = 2
+socktimeout = 90

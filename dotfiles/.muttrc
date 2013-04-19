@@ -1,0 +1,40 @@
+source ~/.mutt/colors.dark
+
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+
+set sendmail="/usr/bin/msmtp -a suse"
+
+set mbox_type = Maildir
+set folder = ~/Maildir 
+set spoolfile = +"INBOX"
+
+set record="+Sent-`date +%Y`"
+set postponed="+postponed"
+
+set sort=threads
+
+# forward including attachement automatically
+set mime_forward=yes
+set mime_forward_rest=yes
+
+# E-Mail alias file
+set alias_file=~/.mutt/aliases
+set sort_alias= alias
+set reverse_alias=yes
+set query_command="lbdbq '%s'"
+
+set from="aaa@bbb.cc"
+
+color hdrdefault white black  # headers white on black
+color header brightgreen black ^From:  # sender's name in green
+color quoted cyan black  # quoted text in blue
+color signature red black   # signature in red
+
+# set up the sidebar, default not visible
+set sidebar_width=20
+set sidebar_visible=no
+set sidebar_delim='|'
+set sidebar_sort=yes
+
